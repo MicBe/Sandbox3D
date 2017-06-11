@@ -1,22 +1,32 @@
-#include <SDL.h>
+#include "Window.h"
 #undef main
-
-#include <GL/glew.h>
 
 #include <iostream>
 using namespace std;
 
 int main(int argc, char* argv[])
 {
-	GLenum glewError = glewInit();
+	try
+	{
+		Window window("Window", 800, 600);
 
-	SDL_Window* window = nullptr;
+		bool quit = false;
 
-	SDL_Surface* surface = nullptr;
-
-	SDL_Init(SDL_INIT_VIDEO);
-	if (SDL_Init(SDL_INIT_VIDEO) < 0)
-		cout << SDL_GetError();
+		SDL_Event e;
+		while (!quit)
+		{
+			while (SDL_PollEvent(&e) != 0)
+			{
+				if (e.type == SDL_QUIT)
+					quit = true;
+			}
+			SDL_GL_SwapWindow(window.Get());
+		}
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 
 	return 0;
 }

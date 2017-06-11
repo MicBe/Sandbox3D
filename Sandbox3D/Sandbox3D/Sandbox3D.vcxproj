@@ -108,11 +108,10 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <AdditionalLibraryDirectories>$(SolutionDir)3rdparty\SDL2-2.0.5\lib\x64;$(Solutiondir)3rdparty\glew-2.0.0\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;glew32s.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(SolutionDir)3rdparty\SDL2-2.0.5\lib\x64\SDL2.dll" "$(OutDir)SDL2.dll"
-copy "$(SolutionDir)3rdparty\glew-2.0.0\bin\Release\x64\glew32.dll" "$(OutDir)glew32.dll"</Command>
+      <Command>copy "$(SolutionDir)3rdparty\SDL2-2.0.5\lib\x64\SDL2.dll" "$(OutDir)SDL2.dll"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -149,15 +148,23 @@ copy "$(SolutionDir)3rdparty\glew-2.0.0\bin\Release\x64\glew32.dll" "$(OutDir)gl
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(SolutionDir)3rdparty\SDL2-2.0.5\lib\x64;$(Solutiondir)3rdparty\glew-2.0.0\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;glew32s.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(SolutionDir)3rdparty\SDL2-2.0.5\lib\x64\SDL2.dll" "$(OutDir)SDL2.dll"
-copy "$(SolutionDir)3rdparty\glew-2.0.0\bin\Release\x64\glew32.dll" "$(OutDir)glew32.dll"</Command>
+      <Command>copy "$(SolutionDir)3rdparty\SDL2-2.0.5\lib\x64\SDL2.dll" "$(OutDir)SDL2.dll"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="GLContext.cpp" />
+    <ClCompile Include="SdlDeleter.cpp" />
+    <ClCompile Include="Window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ErrorReporter.h" />
+    <ClInclude Include="GLContext.h" />
+    <ClInclude Include="SdlDeleter.h" />
+    <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
