@@ -18,12 +18,12 @@ SDL_Window* Window::Get() const
 	return m_window.get();
 }
 
-std::unique_ptr<SDL_Window, SdlDeleter> Window::Create(std::string title, int initialWidth, int initialHeight)
+std::unique_ptr<SDL_Window, SdlDeleter> Window::Create(std::string title, int width, int height)
 {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 		ReportGLError("SDL_Init");
 
-	auto window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, initialWidth, initialHeight, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);
+	auto window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);
 	if (!window)
 		ReportGLError("SDL_CreateWindow");
 
@@ -33,6 +33,8 @@ std::unique_ptr<SDL_Window, SdlDeleter> Window::Create(std::string title, int in
 	auto glewInitRes = glewInit();
 	if (glewInitRes != GLEW_OK)
 		ReportError("Glew failed to initialize.");
+
+	glViewport(0, 0, width, height);
 
 	return std::unique_ptr<SDL_Window, SdlDeleter>(window, SdlDeleter());
 }
