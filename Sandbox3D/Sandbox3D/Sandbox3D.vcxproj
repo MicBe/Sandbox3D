@@ -155,14 +155,22 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BasicEventHandler.cpp" />
+    <ClCompile Include="BasicGameLoop.cpp" />
+    <ClCompile Include="GameLoop.cpp" />
+    <ClCompile Include="IEventHandler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="GLContext.cpp" />
     <ClCompile Include="SdlDeleter.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BasicEventHandler.h" />
+    <ClInclude Include="BasicGameLoop.h" />
     <ClInclude Include="ErrorReporter.h" />
+    <ClInclude Include="GameLoop.h" />
     <ClInclude Include="GLContext.h" />
+    <ClInclude Include="IEventHandler.h" />
     <ClInclude Include="SdlDeleter.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
