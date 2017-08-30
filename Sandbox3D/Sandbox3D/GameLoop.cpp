@@ -17,7 +17,7 @@ void GameLoop::Run()
 		while (SDL_PollEvent(&event) != 0)
 			m_eventHandler->Handle(event);
 
-		Render();
+		ProcessFrame();
 	}
 }
 

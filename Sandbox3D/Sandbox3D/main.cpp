@@ -1,6 +1,6 @@
 #undef main
 
-#include "BasicGameLoop.h"
+#include "SimpleGameLoop.h"
 
 #include <iostream>
 using namespace std;
@@ -9,7 +9,7 @@ int main(int argc, char* argv[])
 {
 	try
 	{
-		BasicGameLoop loop;
+		SimpleGameLoop loop;
 		
 		loop.Run();
 	}

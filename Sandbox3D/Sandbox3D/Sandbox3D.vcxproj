@@ -104,6 +104,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(SolutionDir)3rdparty\SDL2-2.0.5\include;$(SolutionDir)3rdparty\glew-2.0.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -142,6 +143,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(SolutionDir)3rdparty\SDL2-2.0.5\include;$(SolutionDir)3rdparty\glew-2.0.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -156,7 +158,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BasicEventHandler.cpp" />
-    <ClCompile Include="BasicGameLoop.cpp" />
+    <ClCompile Include="BasicShapes.cpp" />
+    <ClCompile Include="IFrameRenderer.cpp" />
+    <ClCompile Include="IFrameRendererFlusher.cpp" />
+    <ClCompile Include="SDLFrameRendererFlusher.cpp" />
+    <ClCompile Include="SimpleGameLoop.cpp" />
     <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="IEventHandler.cpp" />
     <ClCompile Include="main.cpp" />
@@ -166,7 +172,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BasicEventHandler.h" />
-    <ClInclude Include="BasicGameLoop.h" />
+    <ClInclude Include="BasicShapes.h" />
+    <ClInclude Include="IFrameRenderer.h" />
+    <ClInclude Include="IFrameRendererFlusher.h" />
+    <ClInclude Include="SDLFrameRendererFlusher.h" />
+    <ClInclude Include="SimpleGameLoop.h" />
     <ClInclude Include="ErrorReporter.h" />
     <ClInclude Include="GameLoop.h" />
     <ClInclude Include="GLContext.h" />

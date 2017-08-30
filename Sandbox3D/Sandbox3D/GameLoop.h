@@ -12,7 +12,7 @@ public:
 
 	void Run();
 
-	virtual void Render() = 0;
+	virtual void ProcessFrame() = 0;
 
 protected:
 	std::unique_ptr<IEventHandler> m_eventHandler;
