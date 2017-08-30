@@ -2,6 +2,8 @@
 
 #include "IFrameRenderer.h"
 
+#include <vector>
+
 class BasicShapes : public IFrameRenderer
 {
 public:
@@ -9,5 +11,10 @@ public:
 
 private:
 	virtual void RenderFrameImpl() override;
+
+private:
+	std::vector<float> m_triangleVertices;
+	unsigned int m_vbo;
+
 };
 
