@@ -2,7 +2,6 @@
 
 #include <GL/glew.h>
 
-
 BasicShapes::BasicShapes(std::unique_ptr<IFrameRendererFlusher> frameFlusher)
 	:IFrameRenderer(std::move(frameFlusher))
 {
