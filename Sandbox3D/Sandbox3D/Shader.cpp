@@ -1,31 +1,34 @@
 #include "Shader.h"
 
 #include "ErrorReporter.h"
+#include "StringHelper.h"
 
-#include <GL/glew.h>
-
-Shader::Shader(Type type)
-	:m_type(type)
+Shader::Shader(Type type, const std::string& sourceCode)
+	: m_type(type)
 {
-	unsigned int shaderId;
-	if (type == Type::VertexShader)
-	{
-		shaderId = glCreateShader(GL_VERTEX_SHADER);
-		//glShaderSource(shaderId, 1, &vertexShaderSource, nullptr);
-		glCompileShader(shaderId);
+    static constexpr int SHADERS_TABLE[] { GL_VERTEX_SHADER, GL_FRAGMENT_SHADER };
 
-		int  success;
-		char infoLog[512];
-		glGetShaderiv(shaderId, GL_COMPILE_STATUS, &success);
+    m_id = glCreateShader(SHADERS_TABLE[type]);
+    glShaderSource(m_id, 1, StringHelper(sourceCode), nullptr);
+    glCompileShader(m_id);
 
-		if (!success)
-		{
-			glGetShaderInfoLog(shaderId, 512, NULL, infoLog);
-			ReportError(infoLog);
-		}
-	}
-		
+    int success;
+    char infoLog[512];
+    glGetShaderiv(m_id, GL_COMPILE_STATUS, &success);
+    if (!success)
+    {
+        glGetShaderInfoLog(m_id, 512, NULL, infoLog);
+        ReportError(infoLog);
+    }
+}
 
+Shader::~Shader()
+{
+    glDeleteShader(m_id);
+}
 
+GLuint Shader::GetId() const
+{
+    return m_id;
 }
 

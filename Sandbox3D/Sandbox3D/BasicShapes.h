@@ -14,7 +14,6 @@ private:
 
 private:
 	std::vector<float> m_triangleVertices;
-	unsigned int m_vbo;
-
+	GLuint m_vbo;
 };
 
